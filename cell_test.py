@@ -43,15 +43,24 @@ class TestCell(unittest.TestCase):
         model.is_alive(c)
         self.assertEqual(c["status"], '0')
 
-    def test_live_cell_with_three_neighbours(self):
-        c = {"status": '1', "cell_neighbours": 3}
-        model.is_alive(c)
-        self.assertEqual(c["status"], '1')
 
-    def test_live_cell_with_more_than_three_neighbours(self):
-        c = {"status": '1', "cell_neighbours": 4}
-        model.is_alive(c)
-        self.assertEqual(c["status"], '0')
+    def test_cell(self):
+        test_cases = [
+            {
+                "name": "test live cell with more than three neighbours",
+                "input": {"status": '1', "cell_neighbours": 4},
+                "expected": '0'
+            },
+            {
+                "name": "test_live_cell_with_three_neighbours",
+                "input": {"status": '1', "cell_neighbours": 3},
+                "expected": '1'
+            }
+        ]
+        for test_case in test_cases:
+            c = test_case["input"]
+            model.is_alive(c)
+            self.assertEqual(c["status"], test_case["expected"], test_case["name"])
 
 if __name__ == '__main__':
     unittest.main()
