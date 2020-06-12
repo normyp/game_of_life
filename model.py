@@ -6,24 +6,25 @@ cell = {
     "status": 0,
     "cell_neighbours": 3
 }
-
+import copy
 
 # changes status of all the cells
 def generate(grid):
-    newgrid = grid.copy()
+    newgrid = copy.deepcopy(grid)
     for x in range(0, GRID_SIZE_X):
         for y in range(0, GRID_SIZE_Y):
             if grid[x][y] == 1:
-                if countLiveNeighbours(x, y, grid) == 2 or countLiveNeighbours(x, y, grid) == 3:
+                if countLiveNeighbours(x, y, grid, GRID_SIZE_X, GRID_SIZE_Y) == 2 or \
+                        countLiveNeighbours(x, y, grid, GRID_SIZE_X, GRID_SIZE_Y) == 3:
                     setTileAlive(x, y, newgrid)  # Any live cell with two or three live neighbours survives.
                 else:
                     setTileDead(x, y, newgrid)
             else:
-                if countLiveNeighbours(x, y, grid) == 3:
+                if countLiveNeighbours(x, y, grid, GRID_SIZE_X, GRID_SIZE_Y) == 3:
                     setTileAlive(x, y, newgrid)  # Any dead cell with three live neighbours becomes a live cell.
                 else:
                     setTileDead(x, y, newgrid)
-    grid = newgrid
+    return newgrid
 
 
 def setTileAlive(x, y, grid):

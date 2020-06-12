@@ -25,6 +25,12 @@ class test_count_live_neighbours(unittest.TestCase):
                 [0, 1, 0]]
         self.assertEqual(model.countLiveNeighbours(2, 1, grid, 3, 3), 1)
 
+    def test_live_cell_three(self):
+        grid = [[0, 1, 0],
+                [0, 1, 0],
+                [0, 1, 0]]
+        self.assertEqual(model.countLiveNeighbours(1, 2, grid, 3, 3), 3)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -19,7 +19,7 @@ grid[2][2] = 1
 for i in range(0, len(grid)): #prints grid
     print(grid[i])
 
-model.generate(grid)
+grid = model.generate(grid)
 
 for i in range(0, len(grid)): #prints grid
     print(grid[i])
