@@ -1,7 +1,7 @@
 # Any live cell with two or three live neighbours survives.
 # grid of 0's and 1's to represent dead or alive cells
-GRID_SIZE_X = 3
-GRID_SIZE_Y = 5
+GRID_SIZE_X = 5
+GRID_SIZE_Y = 10
 cell = {
     "status": 0,
     "cell_neighbours": 3
